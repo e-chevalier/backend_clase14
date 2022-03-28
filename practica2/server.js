@@ -9,12 +9,27 @@ import { hideBin } from 'yargs/helpers'
 
 
 const PORT = config.port
-const argv = yargs(hideBin(process.argv)).argv
+//const argv = yargs(hideBin(process.argv)).argv
+const argv = yargs(hideBin(process.argv))
+    .default({
+        modo: 'prod',
+        puerto: 0,
+        debug: false
+    })
+    .alias({
+        m: 'modo',
+        p: 'puerto',
+        d: 'debug',
+    })
+    .boolean('debug')
+    .argv
+
 
 // node main.js 1 2 3 -m dev -p 8080 -d
 //{ modo: 'dev', puerto: 8080, debug: true, otros: [ 1, 2, 3 ] }
 
 console.log(argv)
+console.log({ modo: argv.modo, puerto: argv.puerto, debug: argv.debug, otros: argv._ })
 
 // const response = {modo: args.m ||'prod', puerto: args.p || 0, debug: args.d || false, otros: args._}
 // console.log(response)
