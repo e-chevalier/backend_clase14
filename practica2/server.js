@@ -1,19 +1,23 @@
 import express from 'express'
 import config from './config/index.js'
 import cors from 'cors'
-import parseArgs from 'minimist'
+import yargs from 'yargs'
+import { hideBin } from 'yargs/helpers'
+
+
+
 
 
 const PORT = config.port
-const args = parseArgs(process.argv.slice(2))
+const argv = yargs(hideBin(process.argv)).argv
 
 // node main.js 1 2 3 -m dev -p 8080 -d
 //{ modo: 'dev', puerto: 8080, debug: true, otros: [ 1, 2, 3 ] }
 
-console.log(args)
+console.log(argv)
 
-const response = {modo: args.m ||'prod', puerto: args.p || 0, debug: args.d || false, otros: args._}
-console.log(response)
+// const response = {modo: args.m ||'prod', puerto: args.p || 0, debug: args.d || false, otros: args._}
+// console.log(response)
 
 const app = express()
 app.use(express.json())
