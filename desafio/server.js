@@ -1,6 +1,5 @@
 import express from 'express'
 import cors from 'cors'
-import { Server as HttpServer } from 'http'
 import { Server as IOServer } from 'socket.io'
 import { config } from './config/index.js'
 import { config as configAtlas } from './config/mongodbAtlas.js'
@@ -20,8 +19,8 @@ import https from 'https'
 import fs from 'fs'
 import bCrypt from 'bcrypt'
 import faker from 'faker'
-
-
+import yargs from 'yargs'
+import { hideBin } from 'yargs/helpers'
 import { productsMemory, productsContainer, messagesMemory, messagesContainer } from './daos/index.js'
 
 // console.log("PRODUCTS MYSQL")
@@ -228,8 +227,17 @@ const isValidPassword = (user, password) => {
 
 serverRoutes(app, passport)
 
+const argv = yargs(hideBin(process.argv))
+    .default({
+        puerto: 8080
+    })
+    .alias({
+        p: 'puerto'
+    }).argv
 
-const PORT = config.port
+console.log(argv)
+
+const PORT = argv.puerto
 
 const server = httpsServer.listen(PORT, 'localhost', (err) => {
     if (err) {

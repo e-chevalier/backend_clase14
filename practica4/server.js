@@ -25,7 +25,6 @@ const server = app.listen(PORT, (err) => {
 server.on('error', error => console.log(`Error en servidor ${error}`))
 
 
-//const argv = yargs(hideBin(process.argv)).argv
 const argv = yargs(hideBin(process.argv)).argv
 
 
