@@ -77,7 +77,6 @@ const DB_DOMAIN = configAtlas.db_domain
 const DB_NAME = configAtlas.db_name
 const DB_USER = configAtlas.db_user
 
-console.log(`mongodb+srv://${DB_USER}:${DB_PASS}@${DB_DOMAIN}/${DB_NAME}?retryWrites=true&w=majority`)
 
 app.use(session({
     store: MongoStore.create({
@@ -233,9 +232,9 @@ const argv = yargs(hideBin(process.argv))
     })
     .alias({
         p: 'puerto'
-    }).argv
+    })
+    .argv
 
-console.log(argv)
 
 const PORT = argv.puerto
 
