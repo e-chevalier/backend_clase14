@@ -101,8 +101,6 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-console.log(fb_config.facebook_callback)
-
 passport.use(new FacebookStrategy({
     clientID: fb_config.facebookid,
     clientSecret: fb_config.facebooksecret,

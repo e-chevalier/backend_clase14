@@ -2,24 +2,27 @@
 
 <div class="container">
     <div class="d-flex col-12 mt-5">
-        {{data}}
-        <table class="table table-dark table-striped">
+
+        <table class="table table-light table-striped table-hover">
             <thead>
-                <tr>
-                    <th class="col-4 fs-3" scope="col">randoms</th>
-                    <th class="col-8" scope="col"></th>
+                <tr class="table-info fs-3">
+                    <th class="col-4" scope="col">Randoms</th>
+                    <th class="col-8" scope="col">#{{cant}}</th>
                 </tr>
             </thead>
             <tbody>
-                {{#each info}}
-                    <tr>
-                        <td class="col-4">{{this.key}}</td>
-                        <td class="col-8">{{this.value}}</td>
-                    </tr>
+                <tr>
+                    <td class="col-4">Número</td>
+                    <td class="col-8">Cantidad de ocurrencias</td>
+                </tr>
+                {{#each data}}
+                <tr>
+                    <td class="col-4">{{@key}}</td>
+                    <td class="col-8">{{this}}</td>
+                </tr>
                 {{/each}}
             </tbody>
         </table>
-
 
     </div>
 </div>
