@@ -1,8 +1,21 @@
 {{!-- greeting.hbs --}}
 
-<div class="container-fluid bg-danger bg-gradient">
-    <div id="timeout" class="d-flex flex-column justify-content-center fs-1 text-light text-center vh-100">
-        <p>Algo salio mal:</p>
-        <p>{{ message_status }}</p>
+<div class="container-fluid bg-warning bg-gradient">
+    <div class="d-flex flex-column justify-content-center fs-1 text-light text-center vh-100">
+        <ul>
+                {{#each info}}
+                    <tr>
+                        <td>{{this.data}}</td>
+                        <td>${{this.price}}</td>
+                        <td><img src="{{this.thumbnail}}" alt="{{this.title}}" width="32" height="32" /></td>
+                    </tr>
+                {{/each}}
+            <li>Argumentos de entrada: {{}}</li>
+            <li>Sistema Operativo: {{}}</li>
+            <li>Versión de node.js: {{}}</li>
+            <li>Memoria total reservada: {{}}</li>
+            <li>Process id: {{}}</li>
+            <li>Carpeta del proyecto: {{}}</li>
+        </ul>
     </div>
 </div>
